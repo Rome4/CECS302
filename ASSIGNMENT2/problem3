@@ -11,13 +11,13 @@ void reverse(list& L){
     //While loop to alter values of list elements
     while(current != NULL){
 
-        //Node 'next' is assigned value 'current' is linked to
+        //'next' is assigned the data of the node 'current' is linked to
         next = current->next
-        //Node 'current' is linked to 'previous'
+        //Node 'current' is linked to 'previous', reversing the pointer
         current->next = previous;
-        //'previous' is assigned data in 'current'
+        //Increment 'previous'
         previous = current;
-        //'current' is assigned data in 'next'
+        //Increment 'current'
         current = next;
     }
 
