@@ -1,11 +1,13 @@
 #include <list>
 using namespace std;
 
+template <typename list>
+
 //Procedure that iterates through two sorted integer lists and returns a integer list of common elements
-list<int> commonElements (list<int> L1, list<int> L2){
+list commonElements (list L1, list L2){
 
     //Initialize the list of common elements
-    list<int> common;
+    list common;
     //Declare and iterator for each list
     auto itr1 = L1.begin();
     auto itr2 = L2.begin();
@@ -20,7 +22,7 @@ list<int> commonElements (list<int> L1, list<int> L2){
             if(*itr1 == *itr2)
 
                 //Adds value to the back of common element list
-                common.push_back(*itr2);
+                common.insert(L1.end(),*itr2);
 
             //i=Increment L2 iterator
             ++itr2;
@@ -29,7 +31,7 @@ list<int> commonElements (list<int> L1, list<int> L2){
         //Increment L1 iterator
         ++itr1;
 
-        //Sets L2 iterator to begining of L2
+        //Sets L2 iterator to beginning of L2
         itr2 = L2.begin();
 
     }//End L1 loop
@@ -37,4 +39,3 @@ list<int> commonElements (list<int> L1, list<int> L2){
     //Returns list of common elements
     return common;
 }
-
