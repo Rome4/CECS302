@@ -1,39 +1,32 @@
-#include <list>
-#include <iostream>
-using namespace std;
-
 template <typename list>
 
-//Write an algorithm for printing a singly linked list in reverse, using only constant extra space.
+void reverse(list& L){
 
-void reverse(list& L)
-{
-    auto itr = L.begin();
-    auto previous = itr--;
-    auto next = itr++;
-    auto temp = itr;
+    //Assign element values to Nodes
+    //Node for iterative position, position previous, and position after
+    Node *current = head;
+    Node *next = NULL;
+    Node *previous = NULL;
 
-    while(itr != L.end()){
-        next = itr++;;
-        temp = itr--;
-        previous = itr;
-        itr = next;
+    //While loop to alter values of list elements
+    while(current != NULL){
+
+        //Node 'next' is assigned value 'current' is linked to
+        next = current->next
+        //Node 'current' is linked to 'previous'
+        current->next = previous;
+        //'previous' is assigned data in 'current'
+        previous = current;
+        //'current' is assigned data in 'next'
+        current = next;
+    }
+
+    //current is linked to 'previous', finalizing the reversal
+    current->next = previous;
+
+    //print reversed list
+    for(Node i: L){
+        cout << *i << endl;
     }
 }
 
-int main(){
-
-    list<int> L = {1,2,4,6,7,10,11,12,13};
-
-    cout << "Original list: " << endl;
-    for(auto i : L)
-        printf("%d ", i);
-
-    reverse(L);
-
-    cout << "\nReversed list: " << endl;
-    for(auto i : L)
-        printf("%d ", i);
-
-return 0;
-}
