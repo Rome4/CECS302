@@ -1,0 +1,40 @@
+#include <list>
+using namespace std;
+
+//Procedure that iterates through two sorted integer lists and returns a integer list of common elements
+list<int> commonElements (list<int> L1, list<int> L2){
+
+    //Initialize the list of common elements
+    list<int> common;
+    //Declare and iterator for each list
+    auto itr1 = L1.begin();
+    auto itr2 = L2.begin();
+
+    //Loop through first list
+    while(itr1 != L1.end()){
+
+        //Loop through second list
+        while(itr2 != L2.end())
+        {
+            //Check to see if common element
+            if(*itr1 == *itr2)
+
+                //Adds value to the back of common element list
+                common.push_back(*itr2);
+
+            //i=Increment L2 iterator
+            ++itr2;
+        }//End L2 loop
+
+        //Increment L1 iterator
+        ++itr1;
+
+        //Sets L2 iterator to begining of L2
+        itr2 = L2.begin();
+
+    }//End L1 loop
+
+    //Returns list of common elements
+    return common;
+}
+
