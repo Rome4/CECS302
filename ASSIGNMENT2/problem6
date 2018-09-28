@@ -1,0 +1,81 @@
+#include <algorithm>
+#include <chrono>
+#include <iostream>
+using namespace std;
+using namespace std::chrono;
+
+int n = 64, i, j, k;
+int sum = 0;
+
+int main(){
+
+    //Function A
+    auto start = high_resolution_clock::now();
+    for(i = 0; i < n; ++i)
+        ++sum;
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop-start);
+    cout << "(a) Time take by function O(N): " << duration.count() << " microseconds" << endl;
+
+    //Function B
+    start = high_resolution_clock::now();
+    for(i = 0; i < n; ++i)
+        for(j = 0; j < n; ++j)
+            ++sum;
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop-start);
+    cout << "(b) Time take by function O(N^2): " << duration.count() << " microseconds" << endl;
+
+    //Function C
+    start = high_resolution_clock::now();
+    for(i = 0; i < n * n; ++i)
+        for(j = 0; j < n; ++j)
+            ++sum;
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop-start);
+    cout << "(c) Time take by function O(N^3): " << duration.count() << " microseconds" << endl;
+
+    //Function D
+    start = high_resolution_clock::now();
+    for(i = 0; i < n; ++i)
+        for(j = 0; j < i; ++j)
+            ++sum;
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop-start);
+    cout << "(d) Time take by function O(N^2): " << duration.count() << " microseconds" << endl;
+
+
+    //Function E
+    start = high_resolution_clock::now();
+    for(i = 0; i < n; ++i)
+        for(j = 0; j < i * i; ++j)
+            for(k = 0; k < j; ++k)
+                ++sum;
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop-start);
+    cout << "(e) Time take by function O(N^5): " << duration.count() << " microseconds" << endl;
+
+
+    //Function F
+    start = high_resolution_clock::now();
+    for(int i = 1; i < n; ++i)
+        for(int j = 1; j < i * i; ++j)
+            if(j % 1 == 0)
+                for(int k = 0; k < j; ++k)
+                    ++sum;
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop-start);
+    cout << "(f) Time take by function O(N^4): " << duration.count() << " microseconds" << endl;
+
+
+    //Function G
+    start = high_resolution_clock::now();
+    for(int j = 1; j < n; j *= 2)
+        ++sum;
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop-start);
+    cout << "(g) Time take by function O(log N): " << duration.count() << " microseconds" << endl;
+
+    system("pause");
+    return 0;
+}
